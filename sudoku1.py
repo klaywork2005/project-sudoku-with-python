@@ -9,4 +9,10 @@ class ClingoApp(clingo.application.Application):
             ctl.load("-")
         ctl.ground()
         ctl.solve()
+
+    def print_model(self, model, printer) -> None:
+        symbols = model.symbols(shown=True)
+        symbols = sorted(symbols)
+        print(" ".join(str(s) for s in symbols))
+        
 clingo.application.clingo_main(ClingoApp())
